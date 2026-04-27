@@ -7,113 +7,181 @@ import Skills from '../Skills/Skills'
 
 function Home() {
   return (
-      <div className="min-h-screen pt-28" style={{ backgroundColor: '#f2f2f2' }}>
+    <div className="min-h-screen w-full overflow-x-hidden" style={{ backgroundColor: '#f2f2f2' }}>
       <Nav />
-      
-      {/* Hero Section - Top of Page */}
-      <div className="relative px-10" style={{ minHeight: '100vh' }}>
-        <h1 className="text-[200px] font-serif leading-none absolute top-24 left-40">
-          Hello
-        </h1>
-        <h2 className="text-[40px] font-fantasy leading-none text-[#7B7B7B] absolute top-72 left-40">
-          
-          -It's Thisara Goonetilleke-
-        </h2>
-        
-        {/* Follow Me with Social Icons - Positioned where scroll button was */}
-        <div className="absolute left-[240px] top-[520px] relative group cursor-pointer">
-          <h1 className="text-2xl md:text-3xl font-serif tracking-[0.15em] text-[#050509] uppercase group-hover:opacity-0 group-hover:pointer-events-none group-hover:translate-y-[-10px] group-hover:scale-95 transform font-light letter-spacing-wide ">
-            Follow Me
-          </h1>
-          
-          {/* Social Icons - Hidden by default, shown on hover */}
-          <div className="absolute inset-0 flex items-center gap-5 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none group-hover:pointer-events-auto group-hover:translate-y-0 transform translate-y-5">
-          <a 
-            href="https://www.https://www.facebook.com/thisara.denuwan.374facebook.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-[#050509] hover:text-blue-600 transition-colors duration-300 transform hover:scale-110"
-            aria-label="Facebook"
-          >
-            <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-            </svg>
-          </a>
-          
-          <a 
-            href="https://www.instagram.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-[#050509] hover:text-pink-600 transition-colors duration-300 transform hover:scale-110"
-            aria-label="Instagram"
-          >
-            <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-          </a>
-          
-          <a 
-            href="https://wa.me/yournumber" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-[#050509] hover:text-green-600 transition-colors duration-300 transform hover:scale-110"
-            aria-label="WhatsApp"
-          >
-            <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-          </a>
-          
-          <a 
-            href="https://gihttps://github.com/ThisaraDenuthub.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-[#050509] hover:text-gray-800 transition-colors duration-300 transform hover:scale-110"
-            aria-label="GitHub"
-          >
-            <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-              <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd"/>
-            </svg>
-          </a>
-          
-          <a 
-            href="https://www.linkedin.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-[#050509] hover:text-blue-700 transition-colors duration-300 transform hover:scale-110"
-            aria-label="LinkedIn"
-          >
-            <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-          </a>
+
+      {/* Hero Section - Top of Page (locked to one viewport) */}
+      <section
+        id="Home"
+        className="relative w-full h-screen min-h-[600px] flex items-stretch pt-16 sm:pt-20 md:pt-24 pb-4 md:pb-6"
+        style={{ backgroundColor: '#f5f5f5' }}
+      >
+        <div
+          className="w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-12 flex"
+          style={{ maxWidth: 'min(96vw, 2400px)' }}
+        >
+          <div className="flex flex-col-reverse md:flex-row items-center md:items-stretch gap-4 md:gap-6 lg:gap-10 w-full">
+            {/* Left column - Hero text */}
+            <div className="w-full md:w-[52%] lg:w-[48%] xl:w-[45%] flex flex-col justify-between text-center md:text-left py-1 md:py-4">
+              <div className="md:mt-10 lg:mt-16 xl:mt-20 md:ml-6 lg:ml-12 xl:ml-20">
+                <h1
+                  className="font-serif font-normal leading-[0.88] text-[#050509]"
+                  style={{ fontSize: 'clamp(3.5rem, 13vw, 18rem)' }}
+                >
+                  Hello
+                </h1>
+                <h2
+                  className="mt-2 sm:mt-3 md:mt-4 md:ml-4 lg:ml-8 xl:ml-5 font-fantasy text-[#7B7B7B] leading-tight"
+                  style={{ fontSize: 'clamp(1rem, 2.4vw, 3rem)' }}
+                >
+                  -It's Thisara Goonetilleke-
+                </h2>
+              </div>
+
+              {/* Follow Me + Scroll Down stacked together */}
+              <div className="mt-6 sm:mt-8 md:mt-0 md:mb-16 lg:mb-20 xl:mb-26 md:ml-20 lg:ml-32 xl:ml-48 flex flex-col items-center md:items-start gap-6 sm:gap-8 md:gap-10">
+                {/* Follow Me with Social Icons */}
+                <div className="relative group cursor-pointer inline-block">
+                  <h3
+                    className="animate-bump font-serif tracking-[0.15em] text-[#050509] uppercase font-light transition-all duration-500 group-hover:opacity-0 group-hover:pointer-events-none group-hover:-translate-y-2"
+                    style={{ fontSize: 'clamp(1rem, 1.7vw, 2.3rem)' }}
+                  >
+                    Follow Me
+                  </h3>
+
+                  {/* Social Icons - Hidden by default, shown on hover */}
+                  <div className="absolute inset-0 flex items-center justify-center md:justify-start gap-4 sm:gap-5 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none group-hover:pointer-events-auto translate-y-3 group-hover:translate-y-0">
+                    <a
+                      href="https://www.facebook.com/thisara.denuwan.374"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#050509] hover:text-blue-600 transition-colors duration-300 transform hover:scale-110"
+                      aria-label="Facebook"
+                    >
+                      <svg className="w-7 h-7 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                      </svg>
+                    </a>
+
+                    <a
+                      href="https://www.instagram.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#050509] hover:text-pink-600 transition-colors duration-300 transform hover:scale-110"
+                      aria-label="Instagram"
+                    >
+                      <svg className="w-7 h-7 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                      </svg>
+                    </a>
+
+                    <a
+                      href="https://wa.me/yournumber"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#050509] hover:text-green-600 transition-colors duration-300 transform hover:scale-110"
+                      aria-label="WhatsApp"
+                    >
+                      <svg className="w-7 h-7 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                      </svg>
+                    </a>
+
+                    <a
+                      href="https://github.com/ThisaraDenu"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#050509] hover:text-gray-800 transition-colors duration-300 transform hover:scale-110"
+                      aria-label="GitHub"
+                    >
+                      <svg className="w-7 h-7 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                      </svg>
+                    </a>
+
+                    <a
+                      href="https://www.linkedin.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#050509] hover:text-blue-700 transition-colors duration-300 transform hover:scale-110"
+                      aria-label="LinkedIn"
+                    >
+                      <svg className="w-7 h-7 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Scroll Down button */}
+                <a
+                  href="#about"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    const el = document.getElementById('about')
+                    if (el) {
+                      const offset = el.getBoundingClientRect().top + window.pageYOffset - 80
+                      window.scrollTo({ top: offset, behavior: 'smooth' })
+                    }
+                  }}
+                  className="group inline-flex items-center gap-3 text-[#050509] hover:text-black transition-colors duration-300 transform md:translate-x-6 md:translate-y-6 lg:translate-x-12 lg:translate-y-10 xl:translate-x-16 xl:translate-y-16"
+                  aria-label="Scroll down to About section"
+                >
+                  <span
+                    className="font-serif tracking-[0.2em] uppercase font-light"
+                    style={{ fontSize: 'clamp(0.75rem, 1vw, 1rem)' }}
+                  >
+                  
+                  </span>
+                  <span className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#050509]/40 group-hover:border-[#050509] group-hover:bg-[#050509] group-hover:text-white transition-all duration-300">
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            {/* Right column - Image */}
+            <div className="w-full md:w-[48%] lg:w-[52%] xl:w-[55%] flex justify-center md:justify-end items-end md:items-stretch md:h-full">
+              <img
+                src={meImage}
+                alt="Thisara Goonetilleke"
+                className="h-auto md:h-full w-auto max-w-full max-h-[44vh] sm:max-h-[54vh] md:max-h-none object-contain object-right-bottom md:scale-105 2xl:scale-110 md:origin-bottom-right md:translate-x-4 md:translate-y-3 lg:translate-x-12 lg:translate-y-6"
+              />
+            </div>
           </div>
         </div>
+      </section>
 
-        <div className="flex justify-end">
-          <img src={meImage} alt="Me" className="absolute top-[-20px] max-w-3xl w-full h-7xl" />
-        </div>
-      </div>
-
-      {/* About Me Section - Middle of Page */}
+      {/* About Me Section */}
       <AboutMe />
 
       {/* Skills Section */}
       <Skills />
 
       {/* Call to Action Section */}
-      <div className="mt-32 py-10 px-8" style={{ backgroundColor: '#FFFFFF' }}>
+      <div
+        className="mt-16 md:mt-24 lg:mt-32 py-10 md:py-14 px-4 sm:px-6 md:px-8"
+        style={{ backgroundColor: '#FFFFFF' }}
+      >
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl md:text-5xl text-gray-900 mb-6 transition-all duration-700 ease-out">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl text-gray-900 mb-4 md:mb-6 transition-all duration-700 ease-out">
             Got a Vision? Let's Bring It to Life!
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 md:mb-8 leading-relaxed max-w-2xl mx-auto">
             I'm always excited to collaborate on new and innovative projects. Whether you're starting from scratch or refining an existing idea.
           </p>
           <div className="flex justify-center">
-            <a 
-              href="#book-call" 
-              className="text-gray-900 hover:text-gray-700 underline decoration-1 underline-offset-4 flex items-center gap-2 transition-all duration-300 ease-in-out group text-lg font-medium"
+            <a
+              href="#book-call"
+              className="text-gray-900 hover:text-gray-700 underline decoration-1 underline-offset-4 flex items-center gap-2 transition-all duration-300 ease-in-out group text-base sm:text-lg font-medium"
             >
               Book A Call
               <span className="inline-block transition-transform duration-300 ease-in-out group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
@@ -124,7 +192,6 @@ function Home() {
 
       {/* Footer Section */}
       <Footer />
-
     </div>
   )
 }
