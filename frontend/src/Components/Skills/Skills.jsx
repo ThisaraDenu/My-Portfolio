@@ -1,11 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const categories = [
   {
     key: 'frontend',
     title: 'Frontend Development',
     experience: '2+ Years',
-    icon: '💻',
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+      </svg>
+    ),
     skills: [
       { name: 'React', value: 85 },
       { name: 'JavaScript', value: 90 },
@@ -18,7 +23,11 @@ const categories = [
     key: 'uiux',
     title: 'UI/UX Design',
     experience: '1+ Year',
-    icon: '🎨',
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+      </svg>
+    ),
     skills: [
       { name: 'Figma', value: 88 },
       { name: 'Prototyping', value: 85 },
@@ -31,7 +40,11 @@ const categories = [
     key: 'backend',
     title: 'Backend Development',
     experience: '2+ Years',
-    icon: '⚙️',
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+      </svg>
+    ),
     skills: [
       { name: 'Node.js', value: 80 },
       { name: 'MySQL', value: 80 },
@@ -40,102 +53,98 @@ const categories = [
       { name: 'Python', value: 70 },
     ],
   },
-]
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+};
 
 function Skills() {
-  const [active, setActive] = useState('frontend')
-  const activeCategory = categories.find((c) => c.key === active) || categories[0]
-
   return (
-    <section id="skills" className="w-full bg-gradient-to-b to-gray-50 py-16 sm:py-20 md:py-28">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-12">
+    <section id="skills" className="w-full bg-[#f2f2f2] dark:bg-[#050509] transition-colors duration-300 py-16 sm:py-20 md:py-28">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-10">
         {/* Header */}
-        <div className="text-center mb-10 sm:mb-14 md:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3">Professional Skills</h2>
+        <div className="text-center mb-16 md:mb-24">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-serif text-gray-900 dark:text-white mb-4"
+          >
+            Professional Skills
+          </motion.h2>
+          <motion.div 
+            initial={{ opacity: 0, width: 0 }}
+            whileInView={{ opacity: 1, width: "100px" }}
+            viewport={{ once: true }}
+            className="h-1 bg-gray-900 dark:bg-white mx-auto"
+          />
         </div>
 
-        {/* Main content */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8">
-          {/* Category tabs - left sidebar (becomes horizontal scroll on mobile) */}
-          <div className="lg:col-span-1">
-            <div className="flex lg:flex-col gap-3 lg:space-y-3 lg:sticky lg:top-24 overflow-x-auto lg:overflow-visible -mx-4 px-4 lg:mx-0 lg:px-0 pb-2 lg:pb-0">
-              {categories.map((cat) => (
-                <button
-                  key={cat.key}
-                  onClick={() => setActive(cat.key)}
-                  className={`shrink-0 lg:w-full text-left px-4 py-3 sm:py-4 rounded-lg font-medium transition-all duration-200 ${
-                    active === cat.key
-                      ? 'bg-[#FFFFFF] text-black shadow-lg shadow-black'
-                      : 'bg-[#0d0d16] text-white hover:bg-gray-500'
-                  }`}
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="text-lg sm:text-xl">{cat.icon}</span>
-                    <div className="text-left">
-                      <p className="font-semibold text-xs sm:text-sm whitespace-nowrap">{cat.title}</p>
-                      <p className={`text-[11px] sm:text-xs ${active === cat.key ? 'text-black' : 'text-white'}`}>{cat.experience}</p>
-                    </div>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Skills display - main area */}
-          <div className="lg:col-span-3">
-            <div className="bg-[#FFFFFF] rounded-2xl shadow-lg border border-gray-100 p-5 sm:p-8 md:p-10 shadow-black">
-              {/* Category header */}
-              <div className="mb-8 sm:mb-10">
-                <div className="flex items-center gap-3 mb-2 flex-wrap">
-                  <span className="text-3xl sm:text-4xl">{activeCategory.icon}</span>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-black">{activeCategory.title}</h3>
+        {/* 3 Column Grid */}
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+        >
+          {categories.map((cat, index) => (
+            <motion.div 
+              key={cat.key}
+              variants={cardVariants}
+              className="relative group bg-white dark:bg-[#111116] rounded-3xl p-8 sm:p-10 shadow-lg border border-gray-100 dark:border-gray-800 hover:-translate-y-2 transition-all duration-300"
+            >
+              {/* Card Header */}
+              <div className="flex flex-col items-center text-center mb-10">
+                <div className="w-16 h-16 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-900 dark:text-white mb-6 group-hover:scale-110 transition-transform duration-300">
+                  {cat.icon}
                 </div>
-                <p className="text-gray-500 text-xs sm:text-sm font-bold">
-                  Professional experience: <span className="font-semibold text-black">{activeCategory.experience}</span>
-                </p>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{cat.title}</h3>
+                <span className="text-sm font-medium text-gray-500 uppercase tracking-widest">{cat.experience} exp</span>
               </div>
 
-              {/* Skills grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-                {activeCategory.skills.map((skill) => (
-                  <div key={skill.name} className="space-y-3">
-                    <div className="flex items-end justify-between gap-3">
-                      <h4 className="text-sm sm:text-base font-semibold text-black">{skill.name}</h4>
-                      <span className="text-xs sm:text-sm font-medium text-black-600 bg-gray-200 px-2 py-1 rounded">{skill.value}%</span>
+              {/* Skills List (Different UI: Minimal tags with flex-grow bars) */}
+              <div className="space-y-6">
+                {cat.skills.map((skill) => (
+                  <div key={skill.name} className="relative">
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="font-semibold text-gray-700 dark:text-gray-300">{skill.name}</span>
+                      <span className="text-sm font-bold text-gray-900 dark:text-white">{skill.value}%</span>
                     </div>
-                    <div className="relative h-2.5 sm:h-3 w-full bg-gray-200 rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-gradient-to-r from-black to-black rounded-full transition-all duration-700 ease-out"
-                        style={{ width: `${skill.value}%` }}
+                    {/* The sleek, thin progress bar */}
+                    <div className="w-full h-1.5 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
+                      <motion.div 
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${skill.value}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, delay: 0.2 }}
+                        className="h-full bg-gray-900 dark:bg-white rounded-full"
                       />
                     </div>
                   </div>
                 ))}
               </div>
-
-              {/* Footer stats */}
-              <div className="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200">
-                <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center">
-                  <div>
-                    <p className="text-xl sm:text-2xl font-bold text-black">{activeCategory.skills.length}</p>
-                    <p className="text-xs sm:text-sm font-bold text-gray-500">Core Skills</p>
-                  </div>
-                  <div>
-                    <p className="text-xl sm:text-2xl font-bold text-black">{Math.round(activeCategory.skills.reduce((a, b) => a + b.value, 0) / activeCategory.skills.length)}</p>
-                    <p className="text-xs sm:text-sm font-bold text-gray-500">Avg. Proficiency</p>
-                  </div>
-                  <div>
-                    <p className="text-xl sm:text-2xl font-bold text-black">{categories.length}</p>
-                    <p className="text-xs sm:text-sm font-bold text-gray-500">Categories</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+              
+              {/* Decorative background element on hover */}
+              <div className="absolute inset-0 border-2 border-transparent group-hover:border-gray-900 dark:group-hover:border-white rounded-3xl transition-colors duration-300 pointer-events-none" />
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
-  )
+  );
 }
 
-export default Skills
+export default Skills;

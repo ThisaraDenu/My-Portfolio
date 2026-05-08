@@ -1,56 +1,110 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
+import { motion } from 'framer-motion'
 import Nav from '../Nav/Nav'
-import meImage from '../../assets/me.png'
+import meVideo from '../../assets/mevideo.mp4'
 import Footer from '../Footer/Footer'
 import AboutMe from '../AboutMe/AboutMe'
 import Skills from '../Skills/Skills'
+import Works from '../Works/Works'
+import Experience from '../Experience/Experience'
+import Contact from '../Contact/Contact'
+import BackToTop from '../BackToTop/BackToTop'
+import GitHubProjects from '../GitHubProjects/GitHubProjects'
+import Services from '../Services/Services'
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: 'easeOut' },
+  },
+}
 
 function Home() {
+  const heroVideoRef = useRef(null)
+  const heroSectionRef = useRef(null)
+  const hasLeftHeroRef = useRef(false)
+
+  useEffect(() => {
+    const video = heroVideoRef.current
+    const section = heroSectionRef.current
+    if (!video || !section) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          hasLeftHeroRef.current = true
+          return
+        }
+        if (hasLeftHeroRef.current) {
+          video.currentTime = 0
+          video.play().catch(() => {})
+          hasLeftHeroRef.current = false
+        }
+      },
+      { threshold: 0.2 }
+    )
+
+    observer.observe(section)
+    return () => observer.disconnect()
+  }, [])
+
+  const scrollToContact = (e) => {
+    e.preventDefault()
+    const el = document.getElementById('contact')
+    if (el) {
+      const offset = el.getBoundingClientRect().top + window.pageYOffset - 80
+      window.scrollTo({ top: offset, behavior: 'smooth' })
+    }
+  }
+
   return (
-    <div className="min-h-screen w-full overflow-x-hidden" style={{ backgroundColor: '#f2f2f2' }}>
+    <div className="min-h-screen w-full overflow-x-hidden bg-[#f2f2f2] dark:bg-[#050509] transition-colors duration-300">
       <Nav />
 
       {/* Hero Section - Top of Page (locked to one viewport) */}
       <section
         id="Home"
-        className="relative w-full h-screen min-h-[600px] flex items-stretch pt-16 sm:pt-20 md:pt-24 pb-4 md:pb-6"
-        style={{ backgroundColor: '#f5f5f5' }}
+        ref={heroSectionRef}
+        className="relative w-full h-screen min-h-[600px] flex items-stretch pt-16 sm:pt-20 md:pt-24 pb-4 md:pb-6 bg-[#f5f5f5] dark:bg-[#0a0a0f] transition-colors duration-300"
       >
         <div
-          className="w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-12 flex"
+          className="w-full mx-auto px-4 sm:px-6 md:px-8 flex"
           style={{ maxWidth: 'min(96vw, 2400px)' }}
         >
-          <div className="flex flex-col-reverse md:flex-row items-center md:items-stretch gap-4 md:gap-6 lg:gap-10 w-full">
+          <div className="flex flex-col-reverse md:flex-row items-center md:items-stretch gap-4 md:gap-6 w-full">
             {/* Left column - Hero text */}
-            <div className="w-full md:w-[52%] lg:w-[48%] xl:w-[45%] flex flex-col justify-between text-center md:text-left py-1 md:py-4">
-              <div className="md:mt-10 lg:mt-16 xl:mt-20 md:ml-6 lg:ml-12 xl:ml-20">
+            <div className="w-full md:w-[52%] flex flex-col justify-between text-center md:text-left py-1 md:py-4">
+              <div className="md:mt-14 md:ml-10 md:translate-x-16 md:translate-y-8">
                 <h1
                   className="font-serif font-normal leading-[0.88] text-[#050509]"
                   style={{ fontSize: 'clamp(3.5rem, 13vw, 18rem)' }}
                 >
                   Hello
                 </h1>
-                <h2
-                  className="mt-2 sm:mt-3 md:mt-4 md:ml-4 lg:ml-8 xl:ml-5 font-fantasy text-[#7B7B7B] leading-tight"
-                  style={{ fontSize: 'clamp(1rem, 2.4vw, 3rem)' }}
-                >
-                  -It's Thisara Goonetilleke-
-                </h2>
-              </div>
-
-              {/* Follow Me + Scroll Down stacked together */}
-              <div className="mt-6 sm:mt-8 md:mt-0 md:mb-16 lg:mb-20 xl:mb-26 md:ml-20 lg:ml-32 xl:ml-48 flex flex-col items-center md:items-start gap-6 sm:gap-8 md:gap-10">
-                {/* Follow Me with Social Icons */}
-                <div className="relative group cursor-pointer inline-block">
-                  <h3
-                    className="animate-bump font-serif tracking-[0.15em] text-[#050509] uppercase font-light transition-all duration-500 group-hover:opacity-0 group-hover:pointer-events-none group-hover:-translate-y-2"
-                    style={{ fontSize: 'clamp(1rem, 1.7vw, 2.3rem)' }}
+                {/* Subtitle + Follow Me: shrink-wrap to subtitle width so Follow Me sits centered under the line */}
+                <div className="inline-flex flex-col items-center mt-2 sm:mt-3 md:mt-4 md:ml-6 max-w-full text-center">
+                  <h2
+                    className="font-fantasy text-[#7B7B7B] leading-tight"
+                    style={{ fontSize: 'clamp(1rem, 2.4vw, 3rem)' }}
                   >
-                    Follow Me
-                  </h3>
+                    -It's Thisara Goonetilleke-
+                  </h2>
 
-                  {/* Social Icons - Hidden by default, shown on hover */}
-                  <div className="absolute inset-0 flex items-center justify-center md:justify-start gap-4 sm:gap-5 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none group-hover:pointer-events-auto translate-y-3 group-hover:translate-y-0">
+                  {/* Follow Me + Scroll: centered as a pair under subtitle */}
+                  <div className="inline-flex flex-col items-center mt-6 sm:mt-8 md:mt-10 gap-6 sm:gap-8 md:gap-10 md:mb-16">
+                  {/* Follow Me with Social Icons */}
+                  <div className="relative group cursor-pointer inline-block">
+                    <h3
+                      className="animate-bump font-serif tracking-[0.15em] text-[#050509] uppercase font-light transition-all duration-500 group-hover:opacity-0 group-hover:pointer-events-none group-hover:-translate-y-2"
+                      style={{ fontSize: 'clamp(1rem, 1.7vw, 2.3rem)' }}
+                    >
+                      Follow Me
+                    </h3>
+
+                    {/* Social Icons - Hidden by default, shown on hover */}
+                    <div className="absolute inset-0 flex items-center justify-center gap-4 sm:gap-5 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none group-hover:pointer-events-auto translate-y-3 group-hover:translate-y-0">
                     <a
                       href="https://www.facebook.com/thisara.denuwan.374"
                       target="_blank"
@@ -113,8 +167,8 @@ function Home() {
                   </div>
                 </div>
 
-                {/* Scroll Down button */}
-                <a
+                  {/* Scroll Down — centered under Follow Me */}
+                  <a
                   href="#about"
                   onClick={(e) => {
                     e.preventDefault()
@@ -124,7 +178,7 @@ function Home() {
                       window.scrollTo({ top: offset, behavior: 'smooth' })
                     }
                   }}
-                  className="group inline-flex items-center gap-3 text-[#050509] hover:text-black transition-colors duration-300 transform md:translate-x-6 md:translate-y-6 lg:translate-x-12 lg:translate-y-10 xl:translate-x-16 xl:translate-y-16"
+                  className="group inline-flex items-center justify-center gap-3 text-[#050509] hover:text-black transition-colors duration-300 mt-8 sm:mt-10 md:mt-16"
                   aria-label="Scroll down to About section"
                 >
                   <span
@@ -145,34 +199,66 @@ function Home() {
                     </svg>
                   </span>
                 </a>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Right column - Image */}
-            <div className="w-full md:w-[48%] lg:w-[52%] xl:w-[55%] flex justify-center md:justify-end items-end md:items-stretch md:h-full">
-              <img
-                src={meImage}
-                alt="Thisara Goonetilleke"
-                className="h-auto md:h-full w-auto max-w-full max-h-[44vh] sm:max-h-[54vh] md:max-h-none object-contain object-right-bottom md:scale-105 2xl:scale-110 md:origin-bottom-right md:translate-x-4 md:translate-y-3 lg:translate-x-12 lg:translate-y-6"
-              />
+            {/* Right column - Hero video */}
+            <div className="w-full md:w-[48%] flex justify-center md:justify-end items-end md:items-stretch md:h-full">
+              <video
+                ref={heroVideoRef}
+                className="h-auto md:h-full w-auto max-w-full max-h-[46vh] sm:max-h-[54vh] md:max-h-none object-contain object-right-bottom md:scale-125 md:origin-bottom-right md:translate-x-14 translate-y-2 md:translate-y-6"
+                autoPlay
+                muted
+                playsInline
+                aria-label="Thisara Goonetilleke introductory video"
+              >
+                <source src={meVideo} type="video/mp4" />
+              </video>
             </div>
           </div>
         </div>
       </section>
 
-      {/* About Me Section */}
-      <AboutMe />
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={sectionVariants}>
+        <AboutMe />
+      </motion.div>
 
-      {/* Skills Section */}
-      <Skills />
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={sectionVariants}>
+        <Services />
+      </motion.div>
 
-      {/* Call to Action Section */}
-      <div
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={sectionVariants}>
+        <Skills />
+      </motion.div>
+
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={sectionVariants}>
+        <Works />
+      </motion.div>
+
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={sectionVariants}>
+        <GitHubProjects />
+      </motion.div>
+
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={sectionVariants}>
+        <Experience />
+      </motion.div>
+
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} variants={sectionVariants}>
+        <Contact />
+      </motion.div>
+
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-50px' }}
+        variants={sectionVariants}
         className="mt-16 md:mt-24 lg:mt-32 py-10 md:py-14 px-4 sm:px-6 md:px-8"
         style={{ backgroundColor: '#FFFFFF' }}
       >
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl text-gray-900 mb-4 md:mb-6 transition-all duration-700 ease-out">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 md:mb-6 transition-all duration-700 ease-out">
             Got a Vision? Let's Bring It to Life!
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 md:mb-8 leading-relaxed max-w-2xl mx-auto">
@@ -180,18 +266,19 @@ function Home() {
           </p>
           <div className="flex justify-center">
             <a
-              href="#book-call"
-              className="text-gray-900 hover:text-gray-700 underline decoration-1 underline-offset-4 flex items-center gap-2 transition-all duration-300 ease-in-out group text-base sm:text-lg font-medium"
+              href="#contact"
+              onClick={scrollToContact}
+              className="text-gray-900 hover:text-gray-700 underline decoration-1 underline-offset-4 flex items-center gap-2 transition-all duration-300 ease-in-out group text-base sm:text-lg font-medium cursor-pointer"
             >
               Book A Call
               <span className="inline-block transition-transform duration-300 ease-in-out group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
             </a>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Footer Section */}
       <Footer />
+      <BackToTop />
     </div>
   )
 }
