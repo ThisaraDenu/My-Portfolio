@@ -72,7 +72,7 @@ const cardVariants = {
 
 function Skills() {
   return (
-    <section id="skills" className="w-full bg-[#f2f2f2] dark:bg-[#050509] transition-colors duration-300 py-16 sm:py-20 md:py-28">
+    <section id="skills" className="w-full bg-[#f2f2f2] py-16 sm:py-20 md:py-28">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-10">
         {/* Header */}
         <div className="text-center mb-16 md:mb-24">
@@ -80,7 +80,7 @@ function Skills() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-serif text-gray-900 dark:text-white mb-4"
+            className="text-4xl md:text-6xl font-serif text-gray-900 mb-4"
           >
             Professional Skills
           </motion.h2>
@@ -88,7 +88,7 @@ function Skills() {
             initial={{ opacity: 0, width: 0 }}
             whileInView={{ opacity: 1, width: "100px" }}
             viewport={{ once: true }}
-            className="h-1 bg-gray-900 dark:bg-white mx-auto"
+            className="h-1 bg-gray-900 mx-auto"
           />
         </div>
 
@@ -104,14 +104,14 @@ function Skills() {
             <motion.div 
               key={cat.key}
               variants={cardVariants}
-              className="relative group bg-white dark:bg-[#111116] rounded-3xl p-8 sm:p-10 shadow-lg border border-gray-100 dark:border-gray-800 hover:-translate-y-2 transition-all duration-300"
+              className="relative group bg-white rounded-3xl p-8 sm:p-10 shadow-lg border border-gray-100 hover:-translate-y-2 transition-all duration-300"
             >
               {/* Card Header */}
               <div className="flex flex-col items-center text-center mb-10">
-                <div className="w-16 h-16 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-900 dark:text-white mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center text-gray-900 mb-6 group-hover:scale-110 transition-transform duration-300">
                   {cat.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{cat.title}</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">{cat.title}</h3>
                 <span className="text-sm font-medium text-gray-500 uppercase tracking-widest">{cat.experience} exp</span>
               </div>
 
@@ -120,17 +120,17 @@ function Skills() {
                 {cat.skills.map((skill) => (
                   <div key={skill.name} className="relative">
                     <div className="flex justify-between items-center mb-2">
-                      <span className="font-semibold text-gray-700 dark:text-gray-300">{skill.name}</span>
-                      <span className="text-sm font-bold text-gray-900 dark:text-white">{skill.value}%</span>
+                      <span className="font-semibold text-gray-700">{skill.name}</span>
+                      <span className="text-sm font-bold text-gray-900">{skill.value}%</span>
                     </div>
                     {/* The sleek, thin progress bar */}
-                    <div className="w-full h-1.5 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
+                    <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
                       <motion.div 
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.value}%` }}
                         viewport={{ once: true }}
                         transition={{ duration: 1, delay: 0.2 }}
-                        className="h-full bg-gray-900 dark:bg-white rounded-full"
+                        className="h-full bg-gray-900 rounded-full"
                       />
                     </div>
                   </div>
@@ -138,7 +138,7 @@ function Skills() {
               </div>
               
               {/* Decorative background element on hover */}
-              <div className="absolute inset-0 border-2 border-transparent group-hover:border-gray-900 dark:group-hover:border-white rounded-3xl transition-colors duration-300 pointer-events-none" />
+              <div className="absolute inset-0 border-2 border-transparent group-hover:border-gray-900 rounded-3xl transition-colors duration-300 pointer-events-none" />
             </motion.div>
           ))}
         </motion.div>

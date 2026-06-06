@@ -4,16 +4,15 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 
-import { ThemeProvider } from './context/ThemeContext';
+document.documentElement.classList.remove('dark');
+localStorage.removeItem('theme');
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <ThemeProvider>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </ThemeProvider>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
   </BrowserRouter>
 );
 

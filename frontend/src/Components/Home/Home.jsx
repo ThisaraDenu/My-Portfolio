@@ -60,14 +60,14 @@ function Home() {
   }
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-[#f2f2f2] dark:bg-[#050509] transition-colors duration-300">
+    <div className="min-h-screen w-full overflow-x-hidden bg-[#f2f2f2]">
       <Nav />
 
       {/* Hero Section - Top of Page (locked to one viewport) */}
       <section
         id="Home"
         ref={heroSectionRef}
-        className="relative w-full h-screen min-h-[600px] flex items-stretch pt-16 sm:pt-20 md:pt-24 pb-4 md:pb-6 bg-[#f5f5f5] dark:bg-[#0a0a0f] transition-colors duration-300"
+        className="relative w-full h-screen min-h-[600px] flex items-stretch pt-16 sm:pt-20 md:pt-24 pb-4 md:pb-6 bg-[#f5f5f5]"
       >
         <div
           className="w-full mx-auto px-4 sm:px-6 md:px-8 flex"

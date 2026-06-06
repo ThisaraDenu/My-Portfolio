@@ -48,11 +48,11 @@ const itemVariants = {
 
 function Services() {
   return (
-    <section id="services" className="w-full py-20 px-4 sm:px-6 md:px-8 bg-[#f5f5f5] dark:bg-[#050509] transition-colors duration-300">
+    <section id="services" className="w-full py-20 px-4 sm:px-6 md:px-8 bg-[#f5f5f5]">
       <div className="max-w-[1600px] mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">My Services</h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">My Services</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
             What I can do for you. From design to deployment, I build digital experiences that are fast, accessible, and visually stunning.
           </p>
         </div>
@@ -68,13 +68,13 @@ function Services() {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="p-8 rounded-2xl bg-white dark:bg-[#111116] border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-all duration-300 group hover:-translate-y-2"
+              className="p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 group hover:-translate-y-2"
             >
-              <div className="w-16 h-16 rounded-full bg-gray-50 dark:bg-gray-800/50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-16 h-16 rounded-full bg-gray-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 {service.icon}
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{service.title}</h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
+              <p className="text-gray-600 leading-relaxed">
                 {service.description}
               </p>
             </motion.div>
