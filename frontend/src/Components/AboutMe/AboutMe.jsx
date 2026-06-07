@@ -19,49 +19,23 @@ function AboutMe() {
           <div className="flex justify-center md:justify-start">
             <img
               src={meImage}
-              alt="Thisara Goonetilleke"
-              className="w-full max-w-xs sm:max-w-sm md:max-w-md rounded-b-3xl object-cover grayscale"
+              alt="Profile photo of Thisara Goonetilleke"
+              className="w-full max-w-sm sm:max-w-md md:max-w-lg rounded-3xl object-cover shadow-2xl"
             />
           </div>
 
           {/* Right column - Content */}
           <div className="flex flex-col gap-6 sm:gap-8">
             {/* Introduction heading */}
-            <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#7B7B7B]">
-              Hi, I'm Thisara Goonetilleke, based in Sri Lanka.
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#7B7B7B]">
+              Hi, I'm Thisara Goonetilleke, a based in Sri Lanka.
             </h3>
 
             {/* Paragraph text */}
-            <p className="text-[#050509] leading-relaxed text-sm sm:text-base">
+            <p className="text-[#050509] leading-relaxed text-sm sm:text-base md:text-lg">
               "I am a results-driven Software Engineering undergraduate with a deep-seated passion for building high-impact solutions that streamline organizational workflows. I pride myself on being a self-motivated developer who thrives on solving complex problems with efficiency and precision. Beyond coding, I am a flexible and enthusiastic team player with the interpersonal skills necessary to bridge the gap between technical requirements and collaborative success. I am eager to apply my technical curiosity and friendly, proactive attitude to a fast-paced development team."
             </p>
 
-            {/* Stats cards */}
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-2 sm:mt-3">
-              <div className="aspect-[8/7] w-full max-w-[200px] bg-[#0d0d16] border border-[#222237] rounded-2xl px-4 sm:px-6 py-5 sm:py-7 flex flex-col items-start justify-between shadow-lg shadow-black/30">
-                <div className="text-white text-xl sm:text-2xl">★</div>
-                <div>
-                  <p className="text-[11px] sm:text-sm uppercase tracking-wide text-gray-400">
-                    Experience
-                  </p>
-                  <p className="text-base sm:text-lg md:text-xl font-semibold text-white">
-                    2+ Years
-                  </p>
-                </div>
-              </div>
-
-              <div className="aspect-[8/7] w-full max-w-[200px] bg-[#0d0d16] border border-[#222237] rounded-2xl px-4 sm:px-6 py-5 sm:py-7 flex flex-col items-start justify-between shadow-lg shadow-black/30">
-                <div className="text-white text-xl sm:text-2xl">⬒</div>
-                <div>
-                  <p className="text-[11px] sm:text-sm uppercase tracking-wide text-gray-400">
-                    Completed
-                  </p>
-                  <p className="text-base sm:text-lg md:text-xl font-semibold text-white">
-                    3+ Projects
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
