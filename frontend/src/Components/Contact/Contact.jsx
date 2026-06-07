@@ -1,5 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import emailjs from '@emailjs/browser'
+
+const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID
+const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID
+const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -10,20 +15,57 @@ function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+  const [error, setError] = useState('')
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
+    if (error) setError('')
   }
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if (EMAILJS_PUBLIC_KEY) {
+      emailjs.init(EMAILJS_PUBLIC_KEY)
+    }
+  }, [])
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    setError('')
+
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      setError('Email service is not configured. Please add your EmailJS keys to the .env file.')
+      return
+    }
+
     setIsSubmitting(true)
-    setTimeout(() => {
-      setIsSubmitting(false)
+
+    try {
+      const messageHtml = formData.message.replace(/\n/g, '<br/>')
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        reply_to: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        message_html: messageHtml,
+        time: new Date().toLocaleString(),
+      }
+
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams
+      )
+
       setIsSuccess(true)
       setFormData({ name: '', email: '', subject: '', message: '' })
       setTimeout(() => setIsSuccess(false), 5000)
-    }, 1500)
+    } catch (err) {
+      console.error('EmailJS error:', err)
+      setError('Something went wrong. Please try again or email me directly.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -192,6 +234,15 @@ function Contact() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   <p className="text-sm font-medium">Thank you! Your message has been sent successfully.</p>
+                </motion.div>
+              )}
+
+              {error && (
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl flex items-center gap-3">
+                  <svg className="w-5 h-5 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <p className="text-sm font-medium">{error}</p>
                 </motion.div>
               )}
             </form>

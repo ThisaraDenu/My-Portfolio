@@ -12,20 +12,20 @@ const timeline = [
   },
   {
     id: 2,
-    period: '2022 - Present',
+    period: '2023 - Present',
     role: 'Software Engineering Undergraduate',
     company: 'SLIIT',
     description:
       'Pursuing a degree in Software Engineering at the Sri Lanka Institute of Information Technology. Engaging in various academic projects and learning core computer science principles.',
   },
-  {
+  /*{
     id: 3,
     period: '2022 - 2023',
     role: 'Junior Developer Intern',
     company: 'Tech Solutions Inc.',
     description:
       'Worked on frontend development projects, collaborating with senior developers to implement UI components and fix bugs in existing applications.',
-  },
+  },*/
 ]
 
 function Experience() {
