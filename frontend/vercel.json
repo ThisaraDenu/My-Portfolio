@@ -2,7 +2,11 @@
   "version": 2,
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/static/(?P<file>.*)",
+      "dest": "/static/$file"
+    },
+    {
+      "src": "/(?P<file>[^.]*$|.*\\.(?!js$|css$))",
       "dest": "/index.html"
     }
   ]
