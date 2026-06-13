@@ -19,7 +19,7 @@ function AboutMe() {
           <div className="flex justify-center md:justify-start">
             <img
               src={meImage}
-              alt="Profile photo of Thisara Goonetilleke"
+              alt="Thisara Goonetilleke"
               className="w-full max-w-sm sm:max-w-md md:max-w-lg rounded-3xl object-cover shadow-2xl"
             />
           </div>
