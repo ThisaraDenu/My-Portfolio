@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import sliitizenImage from '../../assets/SLIITIZEN.png'
 import campusFlowImage from '../../assets/Canpusflow.png'
+import police360Image from '../../assets/police360.png'
 
 const projects = [
   {
@@ -50,10 +51,30 @@ const projects = [
       </svg>
     ),
   },
-  
-  
-  
-  
+  {
+    title: 'Police360',
+    description:
+      'Police360 is a full-stack incident management platform built with React (Vite) and Tailwind on the frontend and Node.js, Express, and MongoDB on the backend. It features role-based JWT authentication, interactive Leaflet maps, PDF/Excel export, file uploads, and admin tools for streamlined police reporting and case management.',
+    details:
+      'Police360 is a full-stack incident management platform built with React (Vite) and Tailwind on the frontend and Node.js, Express, and MongoDB on the backend. It features role-based JWT authentication, interactive Leaflet maps, reporting and export (PDF/Excel), file uploads, and admin tools to streamline police reporting and case management. The app supports centralized accident/case reporting, suspect/criminal records, officer scheduling, and analytics dashboards with map-based visualizations.',
+    highlights: [
+      'Reporting & Cases: create, update, and track accidents, investigations, IT cases, and general reports',
+      'Records Management: CRUD for offenders, victims, officers, vehicles, schedules, and requests',
+      'Map & Visuals: interactive Leaflet maps and Recharts dashboards for incident location and trends',
+      'File Handling & Export: uploads with Multer, PDF/Excel export using jsPDF, exceljs, and xlsx',
+      'Security: JWT authentication with role-based middleware for Admin, Officer, and IT Officer',
+      'Admin Tools: seed script for admin user and pagination for large datasets',
+    ],
+    tags: ['React', 'Node.js', 'MongoDB'],
+    gradient: 'from-emerald-500 to-teal-700',
+    link: 'https://police360-frontend.vercel.app/',
+    image: police360Image,
+    icon: (
+      <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2a10 10 0 100 20 10 10 0 000-20zm3 10h-2v2a2 2 0 11-4 0v-2H9a2 2 0 110-4h2V6a2 2 0 114 0v2h2a2 2 0 110 4z" />
+      </svg>
+    ),
+  },
 ]
 
 function Works() {
