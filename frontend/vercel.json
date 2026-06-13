@@ -1,13 +1,3 @@
 {
-  "version": 2,
-  "routes": [
-    {
-      "src": "/static/(?P<file>.*)",
-      "dest": "/static/$file"
-    },
-    {
-      "src": "/(?P<file>[^.]*$|.*\\.(?!js$|css$))",
-      "dest": "/index.html"
-    }
-  ]
+  "version": 2
 }
