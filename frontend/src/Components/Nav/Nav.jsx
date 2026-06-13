@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import logo from '../../assets/logo.png'
+import cvPdf from '../../assets/THISARA CV.pdf'
 
 function Nav() {
   const [isVisible, setIsVisible] = useState(false)
@@ -98,8 +99,8 @@ function Nav() {
         <div className="flex items-center gap-3 lg:gap-5">
           {/* Download CV Button */}
           <a
-            href="/resume.pdf"
-            download
+            href={cvPdf}
+            download="THISARA CV.pdf"
             className="hidden sm:flex text-sm md:text-base px-4 py-2 rounded-full border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 ease-in-out items-center gap-2"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -192,8 +193,8 @@ function Nav() {
             Contact
           </a>
           <a
-            href="/resume.pdf"
-            download
+            href={cvPdf}
+            download="THISARA CV.pdf"
             className="px-2 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded font-bold"
           >
             Download CV
