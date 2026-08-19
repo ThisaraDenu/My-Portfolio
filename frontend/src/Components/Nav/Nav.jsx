@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import logo from '../../assets/logo.png'
-import cvPdf from '../../assets/THISARA-CV.pdf'
+import cvPdf from '../../assets/THISARA DENUWAN.pdf'
 
-const CV_FILE_NAME = 'THISARA CV.pdf'
+const CV_FILE_NAME = 'THISARA DENUWAN.pdf'
 
 function Nav() {
   const [isVisible, setIsVisible] = useState(false)
